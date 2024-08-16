@@ -1,0 +1,223 @@
+Summary:
+--------
+1. array()
+2. arange()
+3. linspace()
+4. zeros()
+5. ones()
+6. full()
+7. eye()
+8. identity()
+9 empty()
+10. random library functions
+	1. randint()
+	2. rand()
+	3. uniform()
+	4. randn()
+	5. normal()
+
+Array Attributes:
+-----------------
+The following are various array attributes.
+
+1. ndim: To get dimension of the array
+2. shape: To get shape of the array
+3. size: To get size of the array which is nothing but number of elements.
+4. dtype: To get data type of array elements
+5. itemsize: The size of each array element in bytes
+
+
+eg-1:
+a = np.array([10,20,30,40])
+a.ndim->
+a.shape->(4,)
+a.dtype->int64
+a.itemsize->8
+
+Numpy Data Types:
+-----------------
+In Python we have data types like int, float , complex, bool, str etc
+But Numpy has some extra data types om addition to these types. We can represent
+data types by using a single character also.
+
+i--->integer (int8, int16, int32, int64)
+b--->boolean
+u--->unsigned integer
+f--->float
+c--->complex
+s--->String
+U--->Unicode string
+M--->datetime
+etc
+
+int8
+----
+The value will be represnted by using 8 bits.
+The range of values: -128 to 127
+Note:
+1. By default int means int64
+2. by default float means float64
+
+How to check the data type of an array?
+---------------------------------------
+By using dtype attribute
+eg: dtype('float64')
+
+Note: If the array element unable to convert into our specified type, we will get error.
+
+a=np.array(['a',10,10.5],dtype=int)
+
+How to convert the type of existing array?
+------------------------------------------
+In general we can use astype() function
+
+
+
+Accessing elements of NumPy Array By using slice operator:
+----------------------------------------------------------
+By using index, we can access only one element at a time. But if we want to access 
+multiple elements than we should go for slice operator.
+
+slice ---> means part of nd array.
+
+Slice operator on 1D array:
+---------------------------
+l=[10,20,30,40,50,60]
+l[begin:end] -->It returns elements from begin index to end-1 index.
+l[:end]-->It returns from 0 index to end-1 index
+l[begin:] -->It returns element from begin index to last index.
+l[:]--> It returns complete list
+
+Default value for begin: 0
+default value for end: len(l)
+
+syntax:
+arrayname[begin:end:step]
+
+slice operator on 1D Array:
+---------------------------
+It is exactly same as slice operator on list
+a[begin:end:step]
+
+slice operator on 2D Array:
+---------------------------
+syntax:
+arrayname[row,column]
+arrayname[begin:end:step,begin:end:step]
+
+First slice talks about row where as second slice talks about column
+a[:,0:1]
+
+Advanced Indexing:
+------------------
+By using index: ONly one elementa at a time
+a[i], a[i][j], a[i][j][k]
+
+By using slice operaor, we can access multiple elements but should be in the order.
+a[begin:end:step,begin:end:step,begin:end:step]
+
+If we want to access multiple elements which are not in order(arbitrary elements) or 
+if we wnt to access elements based on some condition then we aannot use basic
+indexing and slicing operators. For this requirement we should go for Advanced 
+Indexing.
+
+Accessing multiple arbitrary elements:
+===================================-=
+syntax: array[x]
+---> x can be either nd array or list, which
+represents required indexes.
+
+Accessing elements of 1-D array:
+--------------------------------
+eg-1: 
+import numpy as np
+a=np.array([10,20,30,40,50,60,70,80,90])
+a
+output:
+array([10, 20, 30, 40, 50, 60, 70, 80, 90])
+
+To access 10,30,80:
+===================
+1st way: create nd array with required indexes and then by passing that array as 
+argument we can accesss corresponding elements.
+
+indexes = np.array([0,2,7])
+a(indexes)
+indexes=np.array([0,2,7])
+a[indexes]
+array([10, 30, 80])
+
+2nd way:
+create list with required indexes and then by passing that list as argument
+we can access corresponding elements.
+l=[0,2,7]
+a[l]
+a[[0,2,7]]
+
+output:
+array([10, 30, 80])
+
+Note: 
+we can access same element multiple times also.
+a[[0,2,7,0,0,2,2,7,7]]
+Output:
+array([10, 30, 80, 10, 10, 30, 30, 80, 80])
+
+Accessing elements of 2-D array:
+==================================
+l=[[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+a=np.array(l)
+a
+output:
+array([[ 1,  2,  3,  4],
+       [ 5,  6,  7,  8],
+       [ 9, 10, 11, 12],
+       [13, 14, 15, 16]])
+
+syntax:
+a[[row_indexes],[column_indexes]]
+
+a[[0,1,2,3],[0,1,2,3]]
+The elements present at (0,0),(1,1),(2,2),(3,3) will be selected
+
+array([ 1,  6, 11, 16])
+
+eg:
+a[[1,3],[0,2]]
+The elements present at (1,0),(3,2) will be selected
+output:
+array([ 5, 15])
+
+
+Arithmetic Operations on Arrays:
+--------------------------------
+The following are various arithemtic operators:
++ --> Addition
+- --> Subtraction
+* --> Multiplication
+/ --> Division
+// -> Floor Division
+** -> Modulo Operation(Remainder Operation)
+% --> Exponential Operation(Power Operation)
+
+Note: The result of divison operator(/) is always float. But floor division operator can return both
+interger and float value. If both arguments are of type int, then
+floor division operator returns int value only. If atleast one argument is float
+type then it return float type only.
+
+All these python's arithmetic operators are applicable on Numpy Arrays also.
+
+1. Arithmetic operators for Numpy arrays with scalars:
+======================================================
+scalar means constant numeric value.
+All arithmetic operators are applicable for Numpy arrays with scalar.
+
+eg: 1D array:
+=============
+import numpy as np
+a=np.array([10,20,30,40,50])
+
+eg: 2D array:
+=============
+a=np.array([[10,20,30],[40,50,60]])
+a
